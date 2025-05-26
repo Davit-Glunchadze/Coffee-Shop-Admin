@@ -1,39 +1,43 @@
-import React, { createContext, useReducer, useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const CoffeeContext = createContext();
 
 const initialState = {
-  ingredients: [],
   coffees: [],
+  ingredients: [],
+  editingCoffee: null,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_INGREDIENT":
-      return { ...state, ingredients: [...state.ingredients, { ...action.payload, id: uuidv4() }] };
-    case "EDIT_INGREDIENT":
-      return {
-        ...state,
-        ingredients: state.ingredients.map((ing) =>
-          ing.id === action.payload.id ? action.payload : ing
-        ),
-      };
-    case "DELETE_INGREDIENT":
-      return { ...state, ingredients: state.ingredients.filter((ing) => ing.id !== action.payload) };
-
     case "ADD_COFFEE":
-      return { ...state, coffees: [...state.coffees, { ...action.payload, id: uuidv4() }] };
+      return { ...state, coffees: [...state.coffees, action.payload] };
+    case "DELETE_COFFEE":
+      return { ...state, coffees: state.coffees.filter((c) => c.id !== action.payload) };
     case "EDIT_COFFEE":
       return {
         ...state,
-        coffees: state.coffees.map((coffee) =>
-          coffee.id === action.payload.id ? action.payload : coffee
+        coffees: state.coffees.map((c) =>
+          c.id === action.payload.id ? action.payload : c
         ),
       };
-    case "DELETE_COFFEE":
-      return { ...state, coffees: state.coffees.filter((coffee) => coffee.id !== action.payload) };
+    case "SET_EDITING_COFFEE":
+      return { ...state, editingCoffee: action.payload };
 
+    case "ADD_INGREDIENT":
+      return { ...state, ingredients: [...state.ingredients, action.payload] };
+    case "DELETE_INGREDIENT":
+      return {
+        ...state,
+        ingredients: state.ingredients.filter((i) => i.id !== action.payload),
+      };
+    case "EDIT_INGREDIENT":
+      return {
+        ...state,
+        ingredients: state.ingredients.map((i) =>
+          i.id === action.payload.id ? action.payload : i
+        ),
+      };
     default:
       return state;
   }
@@ -41,8 +45,64 @@ const reducer = (state, action) => {
 
 export const CoffeeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem("coffee_state", JSON.stringify(state));
+  }, [state]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("coffee_state");
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      dispatch({ type: "INIT", payload: parsed });
+    }
+  }, []);
+
+  const addCoffee = (coffee) => {
+    dispatch({ type: "ADD_COFFEE", payload: coffee });
+  };
+
+  const deleteCoffee = (id) => {
+    dispatch({ type: "DELETE_COFFEE", payload: id });
+  };
+
+  const updateCoffee = (coffee) => {
+    dispatch({ type: "EDIT_COFFEE", payload: coffee });
+  };
+
+  const setEditingCoffee = (coffee) => {
+    dispatch({ type: "SET_EDITING_COFFEE", payload: coffee });
+  };
+
+  const addIngredient = (ingredient) => {
+    dispatch({ type: "ADD_INGREDIENT", payload: ingredient });
+  };
+
+  const deleteIngredient = (id) => {
+    dispatch({ type: "DELETE_INGREDIENT", payload: id });
+  };
+
+  const updateIngredient = (ingredient) => {
+    dispatch({ type: "EDIT_INGREDIENT", payload: ingredient });
+  };
+
   return (
-    <CoffeeContext.Provider value={{ state, dispatch }}>
+    <CoffeeContext.Provider
+      value={{
+        state,
+        coffees: state.coffees,
+        ingredients: state.ingredients,
+        editingCoffee: state.editingCoffee,
+        dispatch,
+        addCoffee,
+        deleteCoffee,
+        updateCoffee,
+        setEditingCoffee,
+        addIngredient,
+        deleteIngredient,
+        updateIngredient,
+      }}
+    >
       {children}
     </CoffeeContext.Provider>
   );
