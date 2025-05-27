@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import styles from "../../styles/Sidebar.module.css";
 
 const Sidebar = () => {
   const { pathname } = useLocation();
@@ -6,45 +7,31 @@ const Sidebar = () => {
   const isActive = (path) => pathname === path;
 
   return (
-    <aside
-      style={{
-        width: "220px",
-        backgroundColor: "#6f4e37",
-        color: "white",
-        padding: "1rem",
-        minHeight: "100vh",
-      }}
-    >
-      <h2 style={{ marginBottom: "2rem" }}>Coffee Admin</h2>
-
-      <nav style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <aside className={styles.sidebar}>
+      <h2>Coffee Admin</h2>
+      <h3>Management Panel</h3>
+      <nav className={styles.nav}>
         <Link
           to="/dashboard"
-          style={{
-            color: isActive("/dashboard") ? "#fff" : "#ccc",
-            textDecoration: "none",
-            fontWeight: isActive("/dashboard") ? "bold" : "normal",
-          }}
+          className={`${styles.link} ${
+            isActive("/dashboard") ? styles.active : ""
+          }`}
         >
           Dashboard
         </Link>
         <Link
           to="/coffee"
-          style={{
-            color: isActive("/coffee") ? "#fff" : "#ccc",
-            textDecoration: "none",
-            fontWeight: isActive("/coffee") ? "bold" : "normal",
-          }}
+          className={`${styles.link} ${
+            isActive("/coffee") ? styles.active : ""
+          }`}
         >
           Add Coffee
         </Link>
         <Link
           to="/ingredients"
-          style={{
-            color: isActive("/ingredients") ? "#fff" : "#ccc",
-            textDecoration: "none",
-            fontWeight: isActive("/ingredients") ? "bold" : "normal",
-          }}
+          className={`${styles.link} ${
+            isActive("/ingredients") ? styles.active : ""
+          }`}
         >
           Manage Ingredients
         </Link>

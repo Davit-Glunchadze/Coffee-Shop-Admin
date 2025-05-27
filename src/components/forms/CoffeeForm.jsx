@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useCoffee } from "../../context/CoffeeContext";
 import { Snackbar, Alert } from "@mui/material";
+import styles from "../../styles/CoffeeForm.module.css";
+
 
 const CoffeeForm = () => {
   const { state, dispatch } = useCoffee();
@@ -86,7 +88,7 @@ const CoffeeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.formWrapper}>
       <h2>{editingCoffee ? "Edit Coffee" : "Add New Coffee"}</h2>
 
       <label htmlFor="title">Coffee Name</label>

@@ -4,6 +4,7 @@ import CoffeeCardList from "../components/cards/CoffeeCardList";
 import CoffeeItemsTable from "../components/tables/CoffeeItemsTable";
 import { useState } from "react";
 import { Snackbar, Alert } from "@mui/material";
+import styles from "../styles/DashboardPage.module.css";
 
 const DashboardPage = () => {
   const { state, dispatch } = useCoffee();
@@ -29,30 +30,28 @@ const DashboardPage = () => {
   };
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h1>Coffee Dashboard</h1>
+    <div className={styles.dashboardWrapper}>
+      <div className={styles.dashboardHeader}>
+        <h1 className={styles.dashboardTitle}>Coffee Dashboard</h1>
         <button
+          className={styles.dashboardAddBtn}
           onClick={() => navigate("/coffee")}
-          style={{ padding: "1px 5px" }}
         >
           Add New Coffee
         </button>
       </div>
-      <CoffeeItemsTable
-        data={coffees}
-        ingredients={ingredients}
-        onDelete={handleDelete}
-        onEdit={handleEdit}
-        onView={handleView}
-      />
-      <h2 style={{ marginTop: "5px" }}>Coffee Cards</h2>
+
+      <div className={styles.dashboardTableWrapper}>
+        <CoffeeItemsTable
+          data={coffees}
+          ingredients={ingredients}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+          onView={handleView}
+        />
+      </div>
+
+      <h2 className={styles.dashboardSubtitle}>Coffee Cards</h2>
       <CoffeeCardList
         coffees={coffees}
         ingredients={ingredients}

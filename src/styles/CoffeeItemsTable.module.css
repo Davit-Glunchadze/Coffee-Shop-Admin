@@ -1,0 +1,57 @@
+.tableWrapper {
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: #6f4e37;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f5f2;
+}
+
+.actionCell {
+  display: flex;
+  gap: 6px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn.view {
+  background-color: #a67c52;
+  color: white;
+}
+
+.btn.edit {
+  background-color: #5c4033;
+  color: white;
+}
+
+.btn.delete {
+  background-color: #e53935;
+  color: white;
+}

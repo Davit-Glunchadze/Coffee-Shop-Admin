@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useCoffee } from "../context/CoffeeContext";
+import styles from "../styles/CoffeeDetailsPage.module.css";
 
 const CoffeeDetailsPage = () => {
   const { id } = useParams();
@@ -35,94 +36,36 @@ const CoffeeDetailsPage = () => {
   };
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <button
-        onClick={() => navigate("/dashboard")}
-        style={{ marginBottom: "1rem" }}
-      >
+    <div className={styles.detailsWrapper}>
+      <button onClick={() => navigate("/dashboard")} className={styles.backBtn}>
         Back to Dashboard
       </button>
 
-      <h1>Coffee Details</h1>
+      <h1 className={styles.title}>Coffee Details</h1>
 
-      <div style={{ display: "flex", gap: "2rem" }}>
-        {/* სურათი ან placeholder */}
+      <div className={styles.container}>
         {coffee.image ? (
-          <img
-            src={coffee.image}
-            alt={coffee.title}
-            style={{
-              width: "300px",
-              height: "200px",
-              objectFit: "cover",
-              borderRadius: "8px",
-            }}
-          />
+          <img src={coffee.image} alt={coffee.title} className={styles.image} />
         ) : (
-          <div
-            style={{
-              width: "300px",
-              height: "200px",
-              backgroundColor: "#eee",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "8px",
-            }}
-          >
-            <span>No Image</span>
-          </div>
+          <div className={styles.noImage}>No Image</div>
         )}
 
-        {/* დეტალები */}
-        <div>
-          <h2>{coffee.title}</h2>
+        <div className={styles.details}>
+          <h2 className={styles.title}>{coffee.title}</h2>
 
-          <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
-            <span
-              style={{
-                background: "#dcbfa6",
-                padding: "4px 10px",
-                borderRadius: "6px",
-              }}
-            >
-              Origin: {coffee.country}
-            </span>
-            <span
-              style={{
-                background: "#dcbfa6",
-                padding: "4px 10px",
-                borderRadius: "6px",
-              }}
-            >
-              Caffeine: {coffee.caffeine}mg
-            </span>
-            <span
-              style={{
-                background: "#dcbfa6",
-                padding: "4px 10px",
-                borderRadius: "6px",
-              }}
-            >
+          <div className={styles.tags}>
+            <span className={styles.tag}>Origin: {coffee.country}</span>
+            <span className={styles.tag}>Caffeine: {coffee.caffeine}mg</span>
+            <span className={styles.tag}>
               Price: ₾{calculateTotalPrice().toFixed(2)}
             </span>
           </div>
 
-          <p style={{ marginBottom: "1rem" }}>{coffee.description}</p>
+          <p className={styles.description}>{coffee.description}</p>
 
           <h3>Ingredients</h3>
           {ingredientDetails.map((ing) => (
-            <div
-              key={ing.id}
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                background: "#f5f5f5",
-                padding: "8px 12px",
-                borderRadius: "6px",
-                marginBottom: "0.5rem",
-              }}
-            >
+            <div className={styles.ingredientItem} key={ing.id}>
               <span>{ing.name}</span>
               <span>
                 Strength: {ing.strength} | Flavor: {ing.flavor}
@@ -130,14 +73,11 @@ const CoffeeDetailsPage = () => {
             </div>
           ))}
 
-          <div style={{ marginTop: "1.5rem" }}>
-            <button onClick={handleEdit} style={{ marginRight: "0.5rem" }}>
+          <div className={styles.actions}>
+            <button onClick={handleEdit} className={styles.editBtn}>
               Edit Coffee
             </button>
-            <button
-              onClick={handleDelete}
-              style={{ backgroundColor: "#e53935", color: "white" }}
-            >
+            <button onClick={handleDelete} className={styles.deleteBtn}>
               Delete Coffee
             </button>
           </div>

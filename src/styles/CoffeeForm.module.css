@@ -1,0 +1,51 @@
+.formWrapper {
+  background-color: white;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formWrapper h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  color: #5c4033;
+}
+
+.formWrapper label {
+  display: block;
+  margin: 16px 0 5px;
+  font-weight: 600;
+}
+
+.formWrapper input,
+.formWrapper textarea,
+.formWrapper select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.formWrapper textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formWrapper button {
+  margin-top: 24px;
+  padding: 10px 20px;
+  background-color: #5c4033;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.formWrapper button:hover {
+  background-color: #3d2a1f;
+}

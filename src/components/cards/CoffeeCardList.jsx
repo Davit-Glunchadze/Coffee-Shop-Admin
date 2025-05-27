@@ -4,7 +4,7 @@ const CoffeeCardList = ({ coffees, onDelete, onEdit, onView}) => {
   if (!coffees.length) return <p>No coffee items found.</p>;
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+    <div>
       {coffees.map((coffee) => (
         <CoffeeCard
           key={coffee.id}
