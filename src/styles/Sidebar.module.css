@@ -46,3 +46,28 @@
   background-color: #8b5e3c;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    /* width: 100%; */
+    /* min-height: auto; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 30px 10px;
+  }
+
+  .nav {
+    gap: 10px;
+  }
+
+  .link {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .sidebar h2,
+  .sidebar h3 {
+    display: none;
+  }
+}

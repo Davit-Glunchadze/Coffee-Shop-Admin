@@ -14,25 +14,30 @@ const CoffeeCard = ({ coffee, onDelete, onEdit, onView }) => {
 
   return (
     <div className={styles.card}>
-  {coffee.image ? (
-    <img src={coffee.image} alt={coffee.title} />
-  ) : (
-    <div className={styles.noImage}>No Image</div>
-  )}
+      {coffee.image ? (
+        <img src={coffee.image} alt={coffee.title} />
+      ) : (
+        <div className={styles.noImage}>No Image</div>
+      )}
 
-  <h3>{coffee.title}</h3>
-  <p>{coffee.description}</p>
-  <p><strong>Origin:</strong> {coffee.country}</p>
-  <p><strong>Caffeine:</strong> {coffee.caffeine} mg</p>
-  <p><strong>Total Price:</strong> ₾{calculateTotalPrice(coffee).toFixed(2)}</p>
+      <h3>{coffee.title}</h3>
+      <p>{coffee.description}</p>
+      <p>
+        <strong>Origin:</strong> {coffee.country}
+      </p>
+      <p>
+        <strong>Caffeine:</strong> {coffee.caffeine} mg
+      </p>
+      <p>
+        <strong>Total Price:</strong> ₾{calculateTotalPrice(coffee).toFixed(2)}
+      </p>
 
-  <div className={styles.cardActions}>
-    <button onClick={() => onView(coffee)}>View More</button>
-    <button onClick={() => onEdit(coffee)}>Edit</button>
-    <button onClick={() => onDelete(coffee.id)}>Delete</button>
-  </div>
-</div>
-
+      <div className={styles.cardActions}>
+        <button onClick={() => onView(coffee)}>View More</button>
+        <button onClick={() => onEdit(coffee)}>Edit</button>
+        <button onClick={() => onDelete(coffee.id)}>Delete</button>
+      </div>
+    </div>
   );
 };
 

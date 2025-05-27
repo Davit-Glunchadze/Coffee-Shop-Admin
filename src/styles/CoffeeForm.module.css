@@ -49,3 +49,15 @@
 .formWrapper button:hover {
   background-color: #3d2a1f;
 }
+
+@media (max-width: 600px) {
+  .formWrapper {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .formWrapper button {
+    width: 100%;
+  }
+}
+

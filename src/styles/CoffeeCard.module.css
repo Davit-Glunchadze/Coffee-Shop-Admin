@@ -73,3 +73,15 @@
   background-color: #e53935;
   color: white;
 }
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+
+  .cardActions {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+

@@ -12,7 +12,7 @@ const CoffeeDetailsPage = () => {
   if (!coffee) return <p>Coffee not found</p>;
 
   const ingredientDetails = ingredients.filter((ing) =>
-    coffee.ingredients.includes(ing.name)
+    coffee.ingredients.includes(ing.id)
   );
 
   const calculateTotalPrice = () => {

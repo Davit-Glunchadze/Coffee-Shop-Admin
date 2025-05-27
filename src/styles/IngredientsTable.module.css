@@ -5,3 +5,9 @@
 .dialog {
   min-width: 400px;
 }
+
+@media (max-width: 500px) {
+  .dialog {
+    min-width: 90vw;
+  }
+}
