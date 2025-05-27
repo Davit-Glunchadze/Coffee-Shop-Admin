@@ -1,0 +1,357 @@
+/* ================================== */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  padding: 20px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn-group button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.list-container {
+  margin-top: 20px;
+}
+
+/* =================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #c0d393;
+}
+
+
+/* ====================================== */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #e3e3e3;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+/* Sidebar სტილები */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #99625c;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.sidebar-header {
+  text-align: center;
+  padding: 20px;
+  color: #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.sidebar-header h1 {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 2rem;
+  margin: 20px 0 10px;
+}
+
+.sidebar-header p {
+  font-size: 1.1rem;
+  color: #c7dba3;
+  margin: 5px 0 0 0;
+}
+
+.sidebar button {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #c7dba3;
+  padding: 16px 16px;
+  text-align: left;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 0;
+  font-weight: 400;
+}
+.sidebar button:hover {
+  background-color: #ffffff23;
+}
+
+.sidebar button.active {
+  background-color: #c0d393;
+  color: white;
+  border-left: 4px solid #ffffff;
+}
+
+/* ===================================== */
+
+.main-content {
+  margin-left: 260px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #4f4949;
+}
+
+/* ====================================== */
+
+.popup-overlay,
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content,
+.modal-content {
+  background-color: #e1e1e1;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.popup-close,
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 24px;
+  border: none;
+  background: none;
+  color: #333;
+}
+
+.modal-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm-delete {
+  background-color: #99625c;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.confirm-delete:hover {
+  background-color: #c7dba3;
+}
+
+/* ===================================== */
+
+.edit-coffee-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #e1e1e1;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.edit-coffee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-coffee-form label {
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.edit-coffee-form input,
+.edit-coffee-form textarea {
+  padding: 8px 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  border: 1px solid #c0d393;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.edit-coffee-form textarea {
+  min-height: 80px;
+}
+
+.edit-coffee-form fieldset {
+  border: 1px solid #99625c;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 14px;
+}
+
+.edit-coffee-form legend {
+  font-weight: 700;
+  padding: 0 5px;
+}
+
+.edit-coffee-form fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.edit-coffee-form button[type="submit"] {
+  background-color: #99625c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-coffee-form button[type="submit"]:hover {
+  background-color: #c0d393;
+}
+
+/* ==================================== */
+
+.coffee-details-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.coffee-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.coffee-info {
+  flex: 1;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+/* ====================================== */
+
+.dashboard-container {
+  padding: 20px;
+}
+
+.dashboard-form-wrapper {
+  padding: 20px;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #c7dba3;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.coffee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.coffee-table th, .coffee-table td {
+  border: 1px solid #b47b757b;
+  padding: 8px;
+  text-align: left;
+}
+
+.coffee-table th {
+  background-color: #99625c;
+}
+
+.cards-title {
+  margin-top: 40px;
+}
+
+.coffee-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.coffee-card {
+  border: 1px solid #c0d393;
+  border-radius: 8px;
+  width: 250px;
+  padding: 10px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  background-color: #e1e1e1;
+}
+
+.coffee-card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.coffee-card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.coffee-card-buttons button {
+  cursor: pointer;
+  padding: 5px 15px;
+  background-color: #e1e1e1;
+  color: #99625c;
+  border-radius: 15px;
+  transition: background-color 0.2s ease;
+  border: 1px solid #99625c;
+}
+
+.coffee-card-buttons button:hover {
+  background-color: #99625c;
+  color: white;
+}
